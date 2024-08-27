@@ -193,7 +193,7 @@ body {
 }
 
 .info-section {
-    background-image: url(./Images/NDIS\ Plan\ Management.jpg);
+    background-image: url(./Images/Social\ &\ Community\ Participation.jpg);
     background-size: cover;
     background-position: center;
     padding: 260px 20px;
@@ -225,61 +225,23 @@ body {
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex: 1;
     max-width: 1500px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.content-sidebar-wrapper {
-    display: flex;
-    margin-bottom: 70px; /* Add some space before the .assume section */
-}
-
 .content {
     flex: 1;
     margin-right: 20px;
-    padding: 20px;
+    padding: 20px;       
     overflow-y: auto;
 }
 
-.sidebar1 {
+.sidebar1 {       
     width: 300px;
-    padding: 20px;
+    padding: 20px;      
     height: fit-content;
-}
-
-.assume {
-    padding: 20px;
-    text-align: center;
-}
-
-.assume h1 {    
-    color: #00572b;
-    padding: 10px 20px;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.assume-items-container { 
-    margin-left: -10%;   
-    display: flex;
-    justify-content: space-around;
-}
-
-.assume-item {    
-    width: 500px;    
-    margin: 20px;
-    padding: 60px;
-    border-radius: 5px;
-    text-align: left; /* Ensure text within items is aligned left */
-}
-
-.assume-item img {
-    width: 140%;
-    height: auto;
-    justify-content: space-between;
-    border-radius: 10px;
 }
 
 h1 {
@@ -292,7 +254,6 @@ h2 {
     font-size: 24px;
     margin-top: 40px;
 }
-
 
 .breadcrumb {
     list-style: none;
@@ -323,17 +284,20 @@ h2 {
 .breadcrumb a:hover {
     text-decoration: underline;
 }
-
-.Daily_living img {
-    width: 80%;
-    height: 10%;
-    border-radius: 15px;
+.Daily_living img{
+    width: 60%;
+    height: 50%;
+    
 }
-
-.Daily_livingg img {
-    width: 25%;
-    height: 30%;
-    border-radius: 15px;
+.Daily_livingg img{
+    width: 40%;
+    height: 50%;
+    
+}
+.Daily_livinggg img{
+    width: 60%;
+    height: 50%;
+    
 }
 
 blockquote {
@@ -341,7 +305,7 @@ blockquote {
     padding: 15px;
     background-color: #f8f8f8;
     border-left: 5px solid #3a9445;
-    font-style: italic;
+    font-style:italic;
     color: #3a9445;
 }
 
@@ -363,9 +327,44 @@ input[type="text"], input[type="email"], input[type="tel"], textarea {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
-   
-
+    border-radius: 5px;
 }
+
+button[type="submit"] {
+    padding: 10px 15px;
+    background-color: #007500;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #005f00;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+hr {
+    margin: 40px 0;
+}
+
 footer {
     
     padding: 0px;
@@ -461,7 +460,7 @@ footer .footer-bottom a {
     text-decoration: none;
 }
 
-/* Responsive design for screens 768px and smaller */
+/* Responsive design for smaller screens */
 @media (max-width: 768px) {
     body {
         margin: 0;
@@ -495,8 +494,24 @@ footer .footer-bottom a {
     .logo img {
         width: 125px;        
     }
+    .Daily_living img{
+        width: 100%;
+        height: 90%;
+        
+    }
+    .Daily_livingg img{
+        width: 70%;
+        height: 50%;
+        
+    }
+    .Daily_livinggg img{
+        width: 100%;
+        height: 10%;
+        
+    }
 /* General styles for the navigation */
 .navigation {
+    padding: 11.4px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -520,81 +535,153 @@ footer .footer-bottom a {
     .menu-button {
         display: block; /* Make the menu button visible */
     }
-}     
-    h1 {
-        color: #3a9445;
-        font-size: 30px;
-    }
-    
-    h2 {
-        color: #3a9445;
-        font-size: 18px;
-        margin-top: 40px;
-    }
 
-    .top-links {
-        display: none; /* Hide top-links on small screens */
+  }
+  @media (max-width: 800px){
+    .top-links{
+        display: none;
     }
-
     .info-section {        
-        background-image: url(./Images/NDIS\ Plan\ Management.jpg);
-        background-size: cover;
+        background-image: url(./Images/Social\ &\ Community\ Participation.jpg);
+        background-size:cover;
         background-position: center;
-        padding: 150px 20px;
+        padding: 150px 0px;
         text-align: left; 
         display: flex;
         justify-content: flex-start; 
         align-items: center; 
     }
-
+    
     .info-content {
         display: none;
         background-color: rgba(0, 153, 0, 0.8);
         color: #fff;
         padding: 15px;
         border-radius: 10px;
-        max-width: 100%; /* Ensure full width */
-        margin-left: 0; 
+        max-width: 400px; 
+        margin-left: 0px; 
     }
-
+    
+    
     .info-content h2 {
         margin: 0;
         color: #ffffff;
         font-size: 1.5em;
     }
-
+    
     .info-content p {
         margin-top: 10px;
         font-size: 1.1em;
     }
+    .video-section iframe{
+        width:100%;
+        height:100%;
+    }   
+}
+footer {
+    background-color: #f9f9f9;
+    padding: 0;
+    color: #094620;
+}
 
-    .video-section iframe {
-        width: 100%;
-        height: auto; /* Adjust height to maintain aspect ratio */
-    }
+footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 0;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap; /* Ensure responsiveness */
+}
 
-    .Daily_living img {
-        width: 80%;
-        height: auto; /* Maintain aspect ratio */
-        border-radius: 15px;
-    }
-    .Daily_livingg img {
-        width: 40%;
-        height: auto; /* Maintain aspect ratio */
-        border-radius: 15px;
-    }    
+footer .footer-left,
+footer .footer-middle,
+footer .footer-right {
+    flex: 1;
+    min-width: 400px; /* Ensure a minimum width for each section */
+    padding: 0 0px; /* Add horizontal padding for each section */
+}
 
-    footer {
-        background-color: #f9f9f9;
-        padding: 0;
-        color: #094620;
-    }
+footer .footer-left img {
+    display: inline;
+    margin: 0 -6%;        
+    padding: 0 10;
+    margin-top: 4%;
+    padding-left: 10%;        
+    padding-bottom: 15px;
+    max-width: 120px; /* Adjust as needed */
+}
 
+footer .footer-left p {
+    text-align: left;
+    margin: 15px 0;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+.footer-middle {
+    display: flex;
+    justify-content: center; 
+    gap: 60px; /* Adjust gap as needed */
+    padding: 20px 0;
+    flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-column a {
+    color: #030303;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 5px 0;
+    display: inline-block;
+    padding: 5px 10px;
+    font-weight: 550;
+    text-align: center;
+}
+
+.footer-column a:hover {
+    background-color: #007500;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+footer .footer-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.footer-right img {
+    max-width: 100px; /* Adjust as needed */
+    padding: 0 20;
+    height: auto;
+    margin-top: 20px;
+    object-fit: contain;
+}
+
+footer .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    background-color: #eee;
+}
+
+footer .footer-bottom p {
+    margin: 5px 0;
+}
+
+footer .footer-bottom a {
+    color: #3987db;
+    text-decoration: none;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
     footer .footer-content {
-        display: flex;
-        justify-content: center;
-        padding: 0 0;
-        border-bottom: 1px solid #ddd;
         flex-direction: column;
         align-items: center;
     }
@@ -602,137 +689,23 @@ footer .footer-bottom a {
     footer .footer-left,
     footer .footer-middle,
     footer .footer-right {
-        flex: 1;
-        min-width: 100%; /* Ensure full width for each section */
-        padding: 10px 0; /* Adjust padding for better spacing */
+        padding: 10px 0;
+        text-align: start;
     }
 
     footer .footer-left img {
-        display: block;
-        margin: 0 auto;
-        padding: 0;
-        max-width: 120px; /* Adjust as needed */
-    }
-
-    footer .footer-left p {
-        text-align: center; /* Center text on smaller screens */
-        margin: 15px 0;
-        line-height: 1.6;
-        padding: 0 20px;
+        margin-bottom: 0px;
     }
 
     .footer-middle {
         display: none; /* Hide the footer-middle section on small screens */
     }
-
-    .footer-column {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-column a {
-        color: #030303;
-        text-decoration: none;
-        font-size: 16px;
-        margin: 5px 0;
-        display: inline-block;
-        padding: 5px 10px;
-        font-weight: 550;
-        text-align: center;
-    }
-
-    .footer-column a:hover {
-        background-color: #007500;
-        color: #ffffff;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-
-    footer .footer-right {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-right: 0;
-    }
-
-    .footer-right img {
-        max-width: 100px; /* Adjust as needed */
-        padding: 0 20px;
-        height: auto;
-        margin-top: 20px;
-        object-fit: contain;
-    }
-
-    footer .footer-bottom {
-        text-align: center;
-        padding-top: 20px;
-        background-color: #eee;
-    }
-
-    footer .footer-bottom p {
-        margin: 5px 0;
-    }
-
-    footer .footer-bottom a {
-        color: #3987db;
-        text-decoration: none;
-    }
-
-    .container { 
-        margin: 0 -5%;              
-        display: flex;
-        flex-direction: column;        
-    }
-
-    .content-sidebar-wrapper {        
-        display: flex;
-        flex-direction: column;
-    }
-
-    .content {
-        width: 90%; /* Ensure full width */
-        
-    }
-
-    .sidebar1 {
-        width: 90%;
-        margin-top: 20px;
-        order: 2; /* Ensures the sidebar comes after the content */
-    }
-    
-    .assume-items-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Center the items horizontally */
-    }
-    
-    .assume-item p{
-        text-align: center;
-        
-    }
-
-    .assume-item {
-        margin-right: -5%;
-        width: 100%; /* Ensure each item takes full width of the container */
-        max-width: 800px; /* Optional: Set a max-width for larger screens */
-        margin-bottom: 20px;
-        padding: 20px;
-        text-align: center;
-    }
-    
-    .assume-item img {
-        
-        width: 90%; /* Adjust to ensure the image scales properly */
-        height: auto;
-    }
-    
+  }
 }
-@media (max-width: 800px){
-    .top-links{
-        display: none;
-    }    
-} 
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
 
-
-
+}
