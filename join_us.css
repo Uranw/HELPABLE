@@ -246,15 +246,16 @@ a:hover {
     font-size: 14px;
 }
 
-/* Breadcrumb */
+.breadcrumb nav ul li{
+    list-style: none;
+} 
 .breadcrumb {
     list-style: none;
     padding: 0;
     margin: 0 0 20px 0;
     font-size: 14px;
 }
-
-.breadcrumb li {
+.breadcrumb li {    
     display: inline;
     margin-right: 5px;
 }
@@ -547,6 +548,39 @@ footer .footer-bottom a {
     .info-content p {
         margin-top: 10px;
         font-size: 1.1em;
+    }
+    .breadcrumb {
+        list-style: none;
+        padding: 0;
+        margin-right: 50%;        
+        font-size: 14px;
+    }
+    
+    .breadcrumb li {
+        display: inline;
+        margin-right: 5px;
+    }
+    
+    .breadcrumb li::after {
+        content: ">";
+        margin-left: 5px;
+    }
+    
+    .breadcrumb li:last-child::after {
+        content: "";
+    }
+    
+    .breadcrumb a {
+        color: #333;
+        text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+        padding: 5px 5px;
+        background-color: #00773e;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 10px; 
     } 
 
 
