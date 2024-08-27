@@ -193,7 +193,7 @@ body {
 }
 
 .info-section {
-    background-image: url(./Images/Approach.jpg);
+    background-image: url(./Images/Daily_living\ skill.jpg);
     background-size: cover;
     background-position: center;
     padding: 260px 20px;
@@ -226,7 +226,7 @@ body {
 .container {
     display: flex;
     flex: 1;
-    max-width: 1400px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -284,13 +284,18 @@ h2 {
 .breadcrumb a:hover {
     text-decoration: underline;
 }
+.Daily_living img{
+    width: 100%;
+    height: 50%;
+    
+}
 
 blockquote {
     margin: 20px 0;
     padding: 15px;
     background-color: #f8f8f8;
     border-left: 5px solid #3a9445;
-    font-style: italic;
+    font-style:italic;
     color: #3a9445;
 }
 
@@ -512,7 +517,7 @@ footer .footer-bottom a {
         display: none;
     }
     .info-section {        
-        background-image: url(./Images/Approach.jpg);
+        background-image: url(./Images/Share_management.jpg);
         background-size:cover;
         background-position: center;
         padding: 150px 0px;
@@ -542,7 +547,11 @@ footer .footer-bottom a {
     .info-content p {
         margin-top: 10px;
         font-size: 1.1em;
-    }    
+    }
+    .video-section iframe{
+        width:100%;
+        height:100%;
+    }   
 }
 footer {
     background-color: #f9f9f9;
