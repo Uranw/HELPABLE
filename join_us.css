@@ -248,9 +248,37 @@ a:hover {
 
 /* Breadcrumb */
 .breadcrumb {
-    padding: 20px 220px;
-    background-color: #e9e9e9;
-    font-size: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-size: 14px;
+}
+
+.breadcrumb li {
+    display: inline;
+    margin-right: 5px;
+}
+
+.breadcrumb li::after {
+    content: ">";
+    margin-left: 5px;
+}
+
+.breadcrumb li:last-child::after {
+    content: "";
+}
+
+.breadcrumb a {
+    color: #333;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    padding: 6px 5px;
+    background-color: #00773e;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px; 
 }
 
 /* Main Section Styles */

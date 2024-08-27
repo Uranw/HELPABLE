@@ -280,9 +280,12 @@ h2 {
     color: #333;
     text-decoration: none;
 }
-
 .breadcrumb a:hover {
-    text-decoration: underline;
+    padding: 6px 5px;
+    background-color: #00773e;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px; 
 }
 .Daily_living img{
     width: 60%;
@@ -299,7 +302,6 @@ h2 {
     height: 50%;
     
 }
-
 blockquote {
     margin: 20px 0;
     padding: 15px;
@@ -308,7 +310,6 @@ blockquote {
     font-style:italic;
     color: #3a9445;
 }
-
 .video-section {
     margin: 20px 0;
 }
