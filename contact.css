@@ -158,6 +158,36 @@ body {
   text-decoration: none;
   border-radius: 10px;    
 }
+.search-nav {
+  margin:10px;   
+  display: flex;
+  align-items: center;
+  width: 90%;
+  padding: 10px 0;
+  padding-bottom: 30px; /* Added padding to create space between search and links */
+  position: relative;
+}
+
+
+.search-nav input[type="text"] {
+  width: 25%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+}
+.search-nav .search-buttonn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}    
+.search-nav .search-buttonn svg {
+      fill: #000;
+}
 .menu-button{
   display: none;
 }
