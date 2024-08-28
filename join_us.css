@@ -330,9 +330,9 @@ a:hover {
 .job-portal-button:hover {
     background-color: #007BFF;
 }
-
 .video-container {
-    text-align:left;
+    margin-right: 0%;
+    text-align:center;
     margin-bottom: 20px;
 }
 
