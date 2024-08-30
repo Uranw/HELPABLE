@@ -193,7 +193,7 @@ body {
 }
 
 .info-section {
-    background-image: url(./Images/Approach.jpg);
+    background-image: url(./Images/Live\ in\ your\ home\ –\ your\ way.jpg);
     background-size: cover;
     background-position: center;
     padding: 260px 20px;
@@ -206,9 +206,9 @@ body {
 .info-content {    
     background-color: rgba(0, 97, 0, 0.836);
     color: #fff;
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
-    max-width: 400px; 
+    max-width: 600px;    
     margin-left: 200px; 
 }
 
@@ -237,6 +237,88 @@ body {
     padding: 20px;       
     overflow-y: auto;
 }
+.property-card {  
+    width: 80%;  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;    
+    border-radius: 10px;    
+    margin-left: 10%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.property-image img {
+    
+    border-radius: 10px;    
+    width: 500px;
+    height: 370px;
+    object-fit: cover;
+}
+
+.property-details {      
+    flex-grow: 1;
+    
+}
+
+.property-details h3 {
+    margin: 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.property-details p {    
+    margin: 5px 30px;
+    color: #666;
+}
+
+.property-icons {
+    display: flex;
+    align-items: center;
+    margin: 1px 30px;
+}
+
+.property-icons span {
+    margin-right: 15px;
+    font-size: 0.9em;
+}
+
+.property-icons i {
+    margin-left: 5px;
+}
+
+.property-features {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 10px 20px;
+}
+.property-details a {
+    margin: 30px;
+}
+.property-features li {  
+    
+    margin-bottom: 5px;
+}
+
+.view-details {
+    display: inline-block;       
+    margin-top: 10px;
+    color: #008a0b;
+    text-decoration: none;
+}
+
+.property-status {
+    position: absolute;
+    top: 20px;
+    right: 220px;
+    background-color: #a0c84c;
+    color: rgba(0, 0, 0, 0.733);
+    padding: 25px 30px;
+    border-radius: 20px;    
+    font-size: 1.3em;
+}
+
 
 .sidebar1 {       
     width: 300px;
@@ -516,7 +598,7 @@ footer .footer-bottom a {
         display: none;
     }
     .info-section {        
-        background-image: url(./Images/Approach.jpg);
+        background-image: url(./Images/Live\ in\ your\ home\ –\ your\ way.jpg);
         background-size:cover;
         background-position: center;
         padding: 150px 0px;
