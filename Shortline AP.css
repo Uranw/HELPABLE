@@ -206,9 +206,9 @@ body {
 .info-content {    
     background-color: rgba(0, 97, 0, 0.836);
     color: #fff;
-    padding: 40px;
+    padding: 30px;
     border-radius: 10px;
-    max-width: 600px;    
+    max-width: 400px;    
     margin-left: 200px; 
 }
 
@@ -222,133 +222,195 @@ body {
     margin-top: 10px;
     font-size: 1.2em;
 }
+.container{    
+    position: relative;
+}
+.container .wrapper{
+    width: 30vw;
+    height: 45vh;    
+    margin: 5rem auto;
+    overflow: hidden;
+    border-radius: 30px;
+}
+.container .wrapper-holder{
+    display: grid;
+    grid-template-columns: repeat(4, 100%);
+    height: 100%;
+    width: 100%;
+    animation: slider 30s ease-in-out infinite alternate;
+}
+.container #slider-img-1{
+    background-image: url(https://www.interchangewa.org.au/wp-content/uploads/2024/03/Shoreline-Location-1024x1024-1.png);
+    background-position: center;
+}
+.container #slider-img-2{
+    background-image: url(https://www.interchangewa.org.au/wp-content/uploads/2024/03/Shoreline-Interior-102x1024-4-e1712029137284.png);
+    background-position: center;
+}
+.container #slider-img-3{
+    background-image: url(https://www.interchangewa.org.au/wp-content/uploads/2024/03/Shoreline-Balcony-View102x1024.png);
+    background-position: center;
+}
+.container #slider-img-4{
+    background-image: url(https://www.interchangewa.org.au/wp-content/uploads/2024/03/Shoreline-Interior-102x1024-1-e1712030583210.png);
+    background-position: center;
+}
+.container .button-holder .button{
+    background-color: white;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    display: inline-block;
+    margin: .3rem;
+}
+.container .button-holder{
+    position: absolute;    
+    left: 45%;
+    bottom: 0%;
+}
+.button:hover{
+    box-shadow: 0px 0px 7px 4px rgba(0, 255, 255, 0.6);
+}
+@keyframes slider{
+    0%{transform: translateX(0%);}
+    10%{transform: translateX(-100%);}
+    20%{transform: translateX(-100%);}
+    30%{transform: translateX(-200%);}
+    40%{transform: translateX(-200%);}
+    50%{transform: translateX(-200%);}
+    60%{transform: translateX(-300%);}
+    70%{transform: translateX(-300%);}
+    80%{transform: translateX(-300%);}
+    90%{transform: translateX(0%);}
+    100%{transform: translateX(0%);}
+}
 
-.container1 {
+.containerr .content{
     display: flex;
     flex: 1;
-    max-width: 1400px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 20px;
 }
-
-.content {
-    flex: 1;
-    margin-right: 20px;
-    padding: 20px;       
-    overflow-y: auto;
-}
-.property-card {  
-    width: 80%;  
+.apartment-details {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 40px;    
-    border-radius: 10px;    
-    margin-left: 10%;
-    margin-bottom: 20px;
-    position: relative;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1500px; /* Adjust this value to change the maximum width */
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.property-image img {
-    
-    border-radius: 10px;    
-    width: 500px;
-    height: 370px;
-    object-fit: cover;
+.apartment-summary {
+    width: 50%;
+    padding-right: 20px;
 }
 
-.property-details {      
-    flex-grow: 1;
-    
+.apartment-info {
+    display: flex;
+    gap: 15px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
-.property-details h3 {
-    margin: 30px;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.property-details p {    
-    margin: 5px 30px;
-    color: #666;
-}
-
-.property-icons {
+.info-item {
     display: flex;
     align-items: center;
-    margin: 1px 30px;
+    gap: 5px;
 }
 
-.property-icons span {
-    margin-right: 15px;
-    font-size: 0.9em;
+.features-list {    
+    padding: 0;
+    margin-top: 10px;
 }
 
-.property-icons i {
-    margin-left: 5px;
+.features-list li {
+    margin-bottom: 5px;
+    font-size: 1em;
 }
 
-.property-features {
-    list-style-type: none;
-    padding-left: 0;
-    margin: 10px 20px;
+.apartment-map {
+    width: 60%;
+    position: relative;
+    margin-bottom: 30px;
 }
-.property-details a {
-    margin: 30px;
+.download-button {
+    display: inline-block;    
+    padding: 30px 60px;
+    background-color: #95af00;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 20px;    
 }
-.property-features li {  
-    
+
+.download-button:hover {
+    background-color: #008a0b;
+}
+
+.about-section {    
+    margin-bottom: 20px;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+}
+
+.about-section h2 {
+    color: #228B22;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.about-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-section ul li {
     margin-bottom: 5px;
 }
 
-.view-details {
-    display: inline-block;       
-    margin-top: 10px;
-    color: #008a0b;
-    text-decoration: none;
+.features-section {
+    margin-bottom: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.property-status {
-    position: absolute;
-    top: 20px;
-    right: 220px;
-    background-color: #a0c84c;
-    color: rgba(0, 0, 0, 0.733);
-    padding: 25px 30px;
-    border-radius: 20px;    
-    font-size: 1.3em;
+.features-section h3 {
+    color: #228B22;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
-
-.sidebar1 {       
-    width: 300px;
-    padding: 20px;      
-    height: fit-content;
-}
-.sidebar1 h3{
-    color: #008a0b;
-}
-.sidebar1 a{
-    color: #008a0b;
+.features-section ul {    
+    padding: 0;
 }
 
-h1 {
-    color: #3a9445;
-    font-size: 40px;
+.features-section ul li {
+    margin-bottom: 5px;
 }
 
-h2 {
-    color: #3a9445;
-    font-size: 24px;
-    margin-top: 40px;
+iframe {
+    border-radius: 5px;
 }
+.content {
+    flex: 1;
+    margin-right: 10px;
+    padding: 20px;       
+    overflow-y: auto;
+}
+
 .form-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding: 50px;    
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 1450px;
     
 }
 
@@ -427,9 +489,8 @@ h2 {
 
 .breadcrumb {
     list-style: none;
-    padding: 0;
-    margin: 0 0 20px 0;
-    font-size: 14px;
+    padding: 0;   
+    font-size: 15px;
 }
 
 .breadcrumb li {
@@ -844,7 +905,7 @@ footer .footer-bottom a {
 }
 /* Responsive Styles */
 @media (max-width: 992px) {
-    .container1 {
+    .container {
         flex-direction: column;
     }
 
@@ -1014,7 +1075,7 @@ footer .footer-bottom a {
 
 /* 768px Media Query for Vertical Alignment */
 @media (max-width: 768px) {
-    .container1 {
+    .container {
         flex-direction: column;        
     }
 }    
