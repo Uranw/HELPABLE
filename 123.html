@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Image Slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide active">
+                <img src="./Images/11-1-300x82.jpg.png" alt="Image 1">
+            </div>
+            <div class="slide">
+                <img src="./Images/11-1-300x82.jpg.webp" alt="Image 2">
+            </div>
+            <div class="slide">
+                <img src="img/photo3.jpg" alt="Image 3">
+            </div>
+            <div class="slide">
+                <img src="img/photo4.jpg" alt="Image 4">
+            </div>
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
