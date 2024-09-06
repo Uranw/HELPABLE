@@ -255,12 +255,14 @@ a:hover {
     margin: 0 0 20px 0;
     font-size: 14px;
 }
-.breadcrumb li {    
+.breadcrumb li { 
+    list-style: none;   
     display: inline;
     margin-right: 5px;
 }
 
 .breadcrumb li::after {
+    list-style: none;
     content: ">";
     margin-left: 5px;
 }
@@ -270,6 +272,7 @@ a:hover {
 }
 
 .breadcrumb a {
+    list-style: none;
     color: #333;
     text-decoration: none;
 }
