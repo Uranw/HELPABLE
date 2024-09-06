@@ -287,8 +287,8 @@ body {
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-  width: 100%;
-  padding: 10px;
+  width: 40%;
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
