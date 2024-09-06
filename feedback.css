@@ -39,7 +39,9 @@ body {
     color: #000;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 210px;
+    padding: 0px 210px;
+    margin-top: -10px;
+    margin-bottom: -25px;
 }
 
 .logo {
@@ -51,7 +53,6 @@ body {
     width: 150px;
     height: auto;    
 }
-
 .sidebar {
     margin-top: 50px;
     padding-top: 20px;                 
@@ -95,7 +96,6 @@ body {
 .search-container {    
     display: flex;
     align-items: center;
-    width: 90%;
     padding: 10px 0;
     padding-bottom: 30px; /* Added padding to create space between search and links */
     position: relative;
@@ -136,18 +136,31 @@ body {
 .sidebar a[href="stories.html"],
 .sidebar a[href="contact.html"] {
     font-weight: bold;
-}
-    
-.navigation li{
+}    
+.navigation li {
     list-style-type: none;
-    display: inline;
-
+    display: inline-block; /* Changed to inline-block to handle dropdown positioning */
+    position: relative; /* Added for dropdown positioning */
 }
-.navigation a {    
+
+.navigation a {      
     color: #000000;
     text-decoration: none;
     padding: 10px 15px;
-    
+}
+
+.navigation li:hover .dropdown {
+    display: block; /* Show dropdown on hover */
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Ensure dropdown is visible */
+    transition-delay: 0s; /* Immediate transition for showing */
+}
+
+.navigation li:hover .dropdownn {
+    display: block; /* Show dropdown on hover */
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Ensure dropdown is visible */
+    transition-delay: 0s; /* Immediate transition for showing */
 }
 
 .navigation a:hover {    
@@ -157,17 +170,33 @@ body {
     text-decoration: none;
     border-radius: 10px;    
 }
+
+.dropdown a:hover {    
+    padding: 15px 25px;
+    background-color: #00773e;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.dropdownn a:hover {    
+    padding: 15px 25px;
+    background-color: #00773e;
+    color: #ffffff;
+    text-decoration: none;
+}
+
 .search-nav {
-    margin:10px;   
+    margin: 10px;   
     display: flex;
     align-items: center;
-    width: 90%;
+    width: 30%;
     padding: 10px 0;
     padding-bottom: 30px; /* Added padding to create space between search and links */
     position: relative;
 }
+
 .search-nav input[type="text"] {
-    width: 25%;
+    width: 85%;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 20px;
@@ -183,11 +212,105 @@ body {
     cursor: pointer;
     padding: 0;
 }    
+
 .search-nav .search-buttonn svg {
-        fill: #000;
+    fill: #000;
 }
-.menu-button{
+
+.menu-button {
     display: none;
+}
+
+.dropdown {
+    display: block; /* Keep it block to use opacity and visibility */
+    position: absolute; /* Position relative to parent */
+    background-color: #f3f3f3;
+    padding: 0; /* Ensure no extra padding */      
+    top: 189.8%; /* Aligns dropdown directly below parent */
+    left: 0; /* Aligns dropdown to the left of parent */
+    width: 280px; /* Set a fixed width for the dropdown */ 
+    z-index: 9999; /* Ensure dropdown is on top */
+    opacity: 0; /* Initially invisible */
+    visibility: hidden; /* Hidden by default */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opacity and visibility */
+    text-align: center; /* Center-align text inside the dropdown */
+}
+
+.navigation li:hover .dropdown {
+    opacity: 10; /* Fully visible */
+    visibility: visible; /* Ensure dropdown is visible */
+    transition-delay: 0s; /* Immediate transition for showing */
+}
+
+.navigation li:not(:hover) .dropdown {
+    opacity: 0; /* Fade out */
+    visibility: hidden; /* Hide after fading out */
+    transition-delay: 0.1s; /* Delay before hiding */
+}
+
+.dropdown li {
+    display: block; /* Ensures dropdown items are stacked vertically */
+}
+
+.dropdown a {
+    display: block;
+    padding: 15px 25px;    
+    text-align: center; /* Center-align text inside each link */
+    text-align: left;
+    color: #000;
+    text-decoration: none;
+}
+
+.dropdown a:hover {
+    background-color: #00773e;
+    color: #ffffff;
+}
+
+/* Updated .dropdownn with right-side positioning */
+
+.dropdownn {
+    display: block; /* Keep it block to use opacity and visibility */
+    position: absolute; /* Position relative to parent */
+    background-color: #f3f3f3;
+    padding: 0; /* Ensure no extra padding */
+    top: 0; /* Align it at the top of the parent list */
+    left: 100%; /* Move it to the right of the parent dropdown */
+    width: 280px; /* Set a fixed width for the dropdown */ 
+    z-index: 9999; /* Ensure dropdown is on top */
+    opacity: 0; /* Initially invisible */
+    visibility: hidden; /* Hidden by default */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opacity and visibility */
+    text-align: center; /* Center-align text inside the dropdown */
+}
+
+.navigation li:hover .dropdownn {
+    opacity: 10; /* Fully visible */
+    visibility: visible; /* Ensure dropdown is visible */
+    transition-delay: 0s; /* Immediate transition for showing */
+}
+
+.navigation li:not(:hover) .dropdownn {
+    opacity: 0; /* Fade out */
+    visibility: hidden; /* Hide after fading out */
+    transition-delay: 0.1s; /* Delay before hiding */
+}
+
+.dropdownn li {
+    display: block; /* Ensures dropdown items are stacked vertically */
+}
+
+.dropdownn a {
+    display: block;
+    padding: 15px 25px;    
+    text-align: center; /* Center-align text inside each link */
+    text-align: left;
+    color: #000;
+    text-decoration: none;
+}
+
+.dropdownn a:hover {
+    background-color: #00773e;
+    color: #ffffff;
 }
 .info-section {
     background-image: url(./Images/Feedback.jpg);
@@ -457,7 +580,7 @@ footer .footer-bottom a {
         color: #000;
         justify-content: space-between;
         align-items: center;
-        padding: 30px 20px;
+        padding: 47px 20px;
     }
     .logo {
         display: flex;
