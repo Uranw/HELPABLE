@@ -450,4 +450,17 @@ body {
     margin: 0 auto;
     padding: 30px;
   }
+  .contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 600;
+  }
+  .contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 90%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 }
