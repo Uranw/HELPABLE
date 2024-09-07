@@ -421,7 +421,7 @@ body {
 
 .sda-section button {
     background-color: #fff;
-    color: #144e14;
+    color: #003b1f;
     padding: 15px 30px;
     border: none;
     border-radius: 5px;
@@ -430,7 +430,8 @@ body {
 }
 
 .sda-section button:hover {
-    background-color: #1ed40d;
+    background-color: #00572b;
+    color: white;
 }
 .container1 {
     display: flex;
