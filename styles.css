@@ -400,7 +400,7 @@ body {
 
 
 .sda-section {
-    background-color: #0b5a0b;
+    background-color: #0b5a0b;    
     color: #fff;
     padding: 50px 20px;
     text-align: center;
@@ -410,11 +410,15 @@ body {
 
 .sda-section h2 {
     font-size: 2em;
+    max-width: 60%;
     color: #fff;
+    margin-left: 20%;
     margin-bottom: 20px;
 }
 
 .sda-section p {
+    max-width: 60%;
+    margin-left: 20%;
     font-size: 1.2em;
     margin-bottom: 30px;
 }
@@ -896,30 +900,37 @@ footer .footer-bottom a {
         color: #555;
     }
     .sda-section {
-        background-color: #0a700a;
+        background-color: #0b5a0b;    
         color: #fff;
-        padding: 40px 25px;
-        text-align:start;        
-        margin-top: 20px;
-        border-radius: 0px;
-    }
-    .sda-section h2 {
-        font-size: 1.5em;
-        color: #fff;
-        margin-bottom: 0px;
+        padding: 50px 20px;
+        text-align:left;
+        border-radius: 0;
+        margin-top: 40px;
+        
     }
     
-    .sda-section p {
-        font-size: 1.1em;
+    .sda-section h2 {
+        max-width: fit-content;
+        font-size: 2em;        
+        color: #fff;
+        margin-left: 1%;
+        margin-bottom: 20px;
+    }
+    
+    .sda-section p { 
+        max-width: fit-content;       
+        margin-left: 1%;
+        font-size: 1.2em;
         margin-bottom: 30px;
     }
-    .section {
-        display: flex;
-        flex-direction: column; /* Stack children vertically */
-        align-items: center; /* Center items horizontally */
-        max-width: 1200px;
-        margin: 40px auto;
-        padding: 20px;
+    .sda-section button {
+        background-color: #fff;
+        color: #003b1f;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1em;
     }
     
     .text-content {
