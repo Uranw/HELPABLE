@@ -341,9 +341,9 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    max-width: 1500px;
+    max-width: 1350px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 .content-sidebar-wrapper {
@@ -359,7 +359,7 @@ body {
 }
 
 .sidebar1 {
-    width: 300px;
+    width: 500px;
     padding: 20px;
     height: fit-content;
 }
@@ -378,13 +378,14 @@ body {
 }
 
 .assume-items-container {        
-    display: flex;
-    justify-content: space-around;
+    display: flex;    
+    justify-content: center; /* Center the items container */
+    margin: 0 auto; /* Center the container within the parent */
 }
 
 .assume-item {    
     width: 500px;    
-    margin: 5px;
+    margin: 10px;
     padding: 20px;
     border-radius: 5px;    
 }
@@ -393,6 +394,14 @@ body {
     width: 110%;
     height: auto;    
     border-radius: 10px;
+}
+
+.assume-item h2,
+.assume-item p {
+    text-align: left; /* Align h2 and p elements to the start (left) */
+    margin: 0; /* Reset default margins */
+    margin-top: 20px; /* Add a top margin for spacing */
+    margin-bottom: 10px; /* Add a bottom margin for spacing */
 }
 
 h1 {
@@ -466,7 +475,7 @@ blockquote {
     margin: 20px 0;
 }
 .services-section {
-    width: 75%;
+    width: 88%;
     margin: 5px auto;
     padding: 40px 0;
 }
