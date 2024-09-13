@@ -341,7 +341,7 @@ body {
 .container1 {
     display: flex;
     flex: 1;
-    max-width: 1400px;
+    max-width: 1350px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -353,13 +353,13 @@ body {
     overflow-y: auto;
 }
 .property-card {  
-    width: 80%;  
+    width: 82%;  
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 4%;
     padding: 40px;    
-    border-radius: 10px;    
-    margin-left: 10%;
+    border-radius: 10px;  
     margin-bottom: 20px;
     position: relative;
 }
@@ -436,7 +436,7 @@ body {
 
 
 .sidebar1 {       
-    width: 300px;
+    width: 400px;
     padding: 20px;      
     height: fit-content;
 }
@@ -463,7 +463,7 @@ h2 {
     align-items: flex-start;
     padding: 50px;    
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 1300px;
     
 }
 
@@ -1050,15 +1050,14 @@ footer .footer-bottom a {
         justify-content: space-between;
         align-items: center;
         padding: 40px;    
-        border-radius: 10px;    
-        margin-left: 10%;
+        border-radius: 10px;        
         margin-bottom: 20px;
         position: relative;
     }
     
     .property-image img {        
-        border-radius: 10px;    
-        width: 50px;
+        border-radius: 10px;            
+        width:  45px;
         height: auto;
         object-fit: cover;
     }
@@ -1158,7 +1157,7 @@ footer .footer-bottom a {
     .property-card {  
         width: 90%; /* Adjust card width for smaller screens */
         padding: 20px;
-        margin-left: 0;
+        margin-left: -2.4%;
         margin-bottom: 20px;
         align-items: flex-start; /* Align items to the top for better spacing */
         flex-direction: column; /* Stack content vertically */
@@ -1166,7 +1165,7 @@ footer .footer-bottom a {
 
     .property-image img {
         margin-bottom: 20px;
-        width: 395px; /* Adjust image size */
+        width: 395px; /* Adjust image size */        
         height: auto;
     }
 
