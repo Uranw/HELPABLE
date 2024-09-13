@@ -932,21 +932,41 @@ footer .footer-bottom a {
         cursor: pointer;
         font-size: 1.1em;
     }
+    .container1 {
+        width: 100vw; /* Make the container fill the entire viewport width */
+        padding: 20px; /* Ensure padding remains consistent */
+        box-sizing: border-box; /* Ensure padding is included in the width */
+    }
+
+    .card {
+        flex: 1 1 100%; /* Make each card take up the full width */
+        margin-bottom: 20px; /* Add space between cards */
+    }
     
+    
+    .section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin: 2rem 0;
+        padding: 2rem;
+        background-color: #f9f9f9;
+    } 
     .text-content {
         width: 90%; /* Full width for text content */
         margin-bottom: 20px; /* Space between text and video */
-    }
-    
+        
+    }    
     .text-content h2 {
         color: #00773e;
         margin-bottom: 15px;
-        font-size: 24px;
+        font-size: 28px;
     }
     
     .text-content p {
         margin-bottom: 15px;
-        font-size: 14px;
+        font-size: 15px;
     }
     
     .read-more {
