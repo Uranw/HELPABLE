@@ -367,8 +367,8 @@ body {
 .service-section {    
     display: flex;
     justify-content: space-between;
-    margin: -80px auto 40px;
-    max-width: 1320px;
+    margin: -70px auto 40px;
+    max-width: 1370px;
     padding: 0;
     position: relative;
     z-index: 2;
