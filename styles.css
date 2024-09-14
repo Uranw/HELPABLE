@@ -363,40 +363,85 @@ body {
     margin-top: 10px;
     font-size: 1.2em;
 }
+
 .service-section {    
     display: flex;
     justify-content: space-between;
-    margin: 40px auto;
-    max-width: 1200px;
+    margin: -80px auto 40px;
+    max-width: 1320px;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 8%;
 }
 
-.service-card {    
-    background-color: #fff;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.service-card-link {
+    text-decoration: none; /* Remove underline from links */
     flex: 1;
-    margin: 0 10px;
-    border-radius: 10px;
+}
+
+.service-card {
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    border-radius: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .service-card img {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.5s ease; /* Smooth zoom effect */
 }
 
-.service-card h3 {
-    color: #009900;
-    font-size: 1.5em;
-    margin-bottom: 10px;
+.service-card:hover img {
+    transform: scale(1.1); /* Zoom effect on image */
 }
 
-.service-card p {
-    font-size: 1em;
-    color: #555;
+.service-text {
+    padding: 20px 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
+
+/* Default state: h3 green, p black */
+.service-text h3 {
+    color: #00773e; /* Green color for h3 */
+}
+
+.service-text p {
+    color: rgb(0, 0, 0); /* Black color for p */
+    font-size: 0.9em; /* Smaller font size for p */
+}
+
+/* On hover: Green background with white h3 and p */
+.service-card:hover .service-text {
+    background-color: #0b5a0b; /* Green background on hover */
+    
+}
+
+.service-card:hover .service-text h3 {
+    color: white; /* h3 turns white on hover */
+}
+
+.service-card:hover .service-text p {
+    color: white; /* p turns white on hover */
+}
+
+/* Padding for both h3 and p to ensure uniformity */
+.service-text h3, .service-text p {
+    padding: 10px 20px;
+    margin: 0;
+}
+
+/* Ensure background hover effect does not apply directly to p or h3 */
+.service-card:hover {
+    background-color: transparent; /* Prevent the hover effect from affecting the text itself */
+}
+
+
 
 
 .sda-section {
@@ -646,6 +691,12 @@ footer {
     padding: 0px;
     color: #094620;
 }
+footer hr {
+    width: 95%;
+    margin: 20px auto;
+    border: none;
+    border-top: 1px solid #ddd;
+}
 
 footer .footer-content {
     display: flex;
@@ -868,14 +919,15 @@ footer .footer-bottom a {
         flex-direction: column; /* Stack cards vertically */
         justify-content: center; /* Center the cards vertically */
         align-items: center; /* Center the cards horizontally */
-        margin: 40px auto;
-        max-width: 1200px;
+        margin: 20px auto;        
+        max-width: 1300px;        
     }
     
     .service-card {    
         padding: 20px;
         text-align: center;
         margin: 10px 0; /* Adjust margin for vertical spacing */
+        margin-left: 22px;
         border-radius: 10px;
         width: 80%; /* Adjust width to fit within the container */
         background-color: transparent; /* No background color */
@@ -885,7 +937,7 @@ footer .footer-bottom a {
     .service-card img {
         width: 101%;
         height: auto;        
-        border-radius: 7px;
+        border-radius: 7px;        
         margin-bottom: 15px;
     }
     
