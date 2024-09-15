@@ -257,32 +257,59 @@
                 <button type="submit">Submit</button>
             </form>
         </section>
+                     <!-- Include SweetAlert2 library -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
         
         <!-- JavaScript for AJAX -->
     <script>
-        document.getElementById('our-approach-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
+         document.getElementById('our-approach-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Create FormData object from the form
+    var formData = new FormData(this);
+    
+    // Send the form data to the server
+    fetch('/submit-our-approach', {
+        method: 'POST',
+        body: new URLSearchParams(formData),
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Check if the response indicates success
+        if (data.message === 'Our Approach form submitted successfully') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Submitted!',
+                text: 'Your Our Approach form has been submitted successfully.',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                // Optionally reset the form
+                document.getElementById('our-approach-form').reset();
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: data.message || 'There was an error submitting your Our Approach form.',
+                confirmButtonText: 'OK'
+            });
+        }
+    })
+    .catch(error => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'There was an error submitting your Our Approach form.',
+            confirmButtonText: 'OK'
+        });
+    });
+});
 
-            try {
-                const response = await fetch('/submit-our-approach', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-                
-                const result = await response.json();
-                alert(result.message);
-                this.reset(); // Optionally clear the form after submission
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });        
+
     </script>
         </div>
         
@@ -305,30 +332,62 @@
               
                 <button type="submit">Submit</button>
               </form>
-              <script>
-                document.getElementById('sidebar-form').addEventListener('submit', async function(event) {
-                  event.preventDefault();
-              
-                  const formData = new FormData(this);
-                  const data = Object.fromEntries(formData.entries());
-              
-                  try {
-                    const response = await fetch('/submit-sidebar', {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
-                      },
-                      body: JSON.stringify(data),
-                    });
-              
-                    const result = await response.json();
-                    alert(result.message);
-                    this.reset();
-                  } catch (error) {
-                    console.error('Error:', error);
-                  }
-                });
-              </script>
+
+              <!-- Include SweetAlert2 library -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+ document.getElementById('sidebar-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  // Log form data to verify
+  for (let [key, value] of formData.entries()) {
+    console.log(`${key}: ${value}`);
+  }
+
+  fetch('/submit-sidebar', {
+      method: 'POST',
+      body: new URLSearchParams(formData),
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      }
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log('Response Data:', data);
+
+      if (data.message === 'Sidebar form submitted successfully') {
+          Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: data.message,
+          }).then(() => {
+              document.getElementById('sidebar-form').reset(); // Optionally reset the form
+          });
+      } else {
+          Swal.fire({
+              icon: 'error',
+              title: 'Submission Failed',
+              text: data.message || 'There was an issue submitting your form.',
+          });
+      }
+  })
+  .catch(error => {
+      console.error('Fetch Error:', error.message);
+      Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Please try again later.',
+      });
+  });
+});
+
+
+
+</script>
+
               
               
         </aside>
