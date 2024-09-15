@@ -23,7 +23,9 @@ const Form = require('./models/Form');
 const Feedback = require('./models/Feedback');
 const Question = require('./models/Question');
 
-// Handle existing form submission
+
+
+// Handle form submission
 app.post('/submit-form', async (req, res) => {
   try {
     const formData = new Form({
@@ -31,17 +33,22 @@ app.post('/submit-form', async (req, res) => {
       email: req.body.email,
       phone: req.body.phone,
       suburb: req.body.suburb,
-      services: req.body.services, // This should be an array of strings
+      services: req.body.services,
       message: req.body.message
     });
 
     await formData.save();
-    res.send('Form data saved successfully');
+    res.status(200).json({ success: true, message: 'Form data saved successfully' }); // Send JSON response
   } catch (err) {
     console.error('Error saving form data:', err);
-    res.status(500).send('Error saving form data');
+    res.status(500).json({ success: false, message: 'Error saving form data' }); // Send JSON error response
   }
 });
+
+
+
+
+
 
 // Handle feedback form submission
 app.post('/submit-feedback', async (req, res) => {
@@ -55,24 +62,30 @@ app.post('/submit-feedback', async (req, res) => {
   }
 });
 
+
 // Handle sidebar question form submission
 app.post('/submit-question', async (req, res) => {
-    try {
-      const questionData = new Question({
-        name: req.body['sidebar-name'],
-        email: req.body['sidebar-email'],
-        phone: req.body['sidebar-phone'],
-        suburb: req.body['sidebar-suburb'],
-        message: req.body['sidebar-message']
-      });
-      
-      await questionData.save();
-      res.send('Question submitted successfully');
-    } catch (err) {
-      console.error('Error saving question:', err);
-      res.status(500).send('Error submitting question');
-    }
-  });
+  try {
+     
+    const questionData = new Question({
+      name: req.body['sidebar-name'],
+      email: req.body['sidebar-email'],
+      phone: req.body['sidebar-phone'],
+      suburb: req.body['sidebar-suburb'],
+      message: req.body['sidebar-message']
+    });
+    
+    await questionData.save();
+    res.send('Question submitted successfully');
+  } catch (err) {
+      console.error('Error saving form data:', err);
+      res.status(500).send('Error saving form data');
+    
+  }
+});
+
+
+
   
 
 // Catch-all route to serve 'index.html'
