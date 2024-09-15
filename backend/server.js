@@ -62,23 +62,25 @@ app.post('/submit-feedback', async (req, res) => {
   }
 });
 
-// Handle sidebar question form submission
-app.post('/submit-form', async (req, res) => {
-  try {
-    const formData = new Form({
-      name: req.body.name,
-      email: req.body.email,
-      phone: req.body.phone,
-      suburb: req.body.suburb,
-      services: req.body.services,
-      message: req.body.message
-    });
 
-    await formData.save();
-    res.status(200).json({ success: true, message: 'Form data saved successfully' }); // JSON response
+// Handle sidebar question form submission
+app.post('/submit-question', async (req, res) => {
+  try {
+     
+    const questionData = new Question({
+      name: req.body['sidebar-name'],
+      email: req.body['sidebar-email'],
+      phone: req.body['sidebar-phone'],
+      suburb: req.body['sidebar-suburb'],
+      message: req.body['sidebar-message']
+    });
+    
+    await questionData.save();
+    res.send('Question submitted successfully');
   } catch (err) {
-    console.error('Error saving form data:', err);
-    res.status(500).json({ success: false, message: 'Error saving form data' }); // JSON error response
+      console.error('Error saving form data:', err);
+      res.status(500).send('Error saving form data');
+    
   }
 });
 
