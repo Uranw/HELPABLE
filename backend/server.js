@@ -22,8 +22,8 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
 const Form = require('./models/Form');
 const Feedback = require('./models/Feedback');
 const Question = require('./models/Question');
-
-
+const OurApproachContact = require('./models/OurApproachContact');
+const SidebarContact = require('./models/SidebarContact'); // Make sure this path is correct
 
 // Handle form submission
 app.post('/submit-form', async (req, res) => {
@@ -45,11 +45,6 @@ app.post('/submit-form', async (req, res) => {
   }
 });
 
-
-
-
-
-
 // Handle feedback form submission
 app.post('/submit-feedback', async (req, res) => {
   try {
@@ -57,16 +52,14 @@ app.post('/submit-feedback', async (req, res) => {
     await feedbackData.save();
     res.status(200).json({ message: 'Feedback submitted successfully' });
   } catch (err) {
-    console.error('Feedback submission error:', error);
+    console.error('Feedback submission error:', err);
     res.status(500).json({ message: 'Failed to submit feedback' });
   }
 });
 
-
 // Handle sidebar question form submission
 app.post('/submit-question', async (req, res) => {
   try {
-     
     const questionData = new Question({
       name: req.body['sidebar-name'],
       email: req.body['sidebar-email'],
@@ -78,15 +71,34 @@ app.post('/submit-question', async (req, res) => {
     await questionData.save();
     res.status(200).json({ message: 'Question submitted successfully' });
   } catch (err) {
-      console.error('Error saving form data:', err);
-      res.status(500).json({ message: 'Failed to submit question' });
-    
+    console.error('Error saving form data:', err);
+    res.status(500).json({ message: 'Failed to submit question' });
   }
 });
 
+// Handle our approach form submission
+app.post('/submit-our-approach', async (req, res) => {
+  try {
+    const ourApproachData = new OurApproachContact(req.body);
+    await ourApproachData.save();
+    res.status(200).json({ message: 'Our Approach form submitted successfully' });
+  } catch (err) {
+    console.error('Error saving Our Approach form data:', err);
+    res.status(500).json({ message: 'Failed to submit Our Approach form' });
+  }
+});
 
-
-  
+// Handle sidebar form submission
+app.post('/submit-sidebar', async (req, res) => {
+  try {
+    const sidebarData = new SidebarContact(req.body);
+    await sidebarData.save();
+    res.status(200).json({ message: 'Sidebar form submitted successfully' });
+  } catch (err) {
+    console.error('Error saving Sidebar form data:', err);
+    res.status(500).json({ message: 'Failed to submit Sidebar form' });
+  }
+});
 
 // Catch-all route to serve 'index.html'
 app.get('*', (req, res) => {
