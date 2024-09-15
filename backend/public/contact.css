@@ -1,0 +1,586 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f4f4;
+  padding-top: 140px;
+}
+
+.header {    
+  background-color: #ffffff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  color: #ffffff; 
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 210px;    
+  background-color: #007500;    
+}
+.top-links a {
+  color: #fff;           
+  text-decoration: none;
+  margin-left: 20px;    
+}
+
+.top-links a:hover {
+  padding: 24px 10px;
+  background-color: #ffffff;
+  color: #007500;
+  text-decoration: none;
+  border-radius: auto; 
+}
+
+.main-header {
+  display: flex;
+  color: #000;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 210px;
+  margin-top: -10px;
+  margin-bottom: -25px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 150px;
+  height: auto;    
+}
+.sidebar {
+  margin-top: 50px;
+  padding-top: 20px;                 
+  position: fixed;
+  top: 0;    
+  right: 0;
+  height: 100vh;
+  width: 250px;    
+  background-color: #ffffff;   
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+.sidebar a {
+  display: block;
+  width: 100%;
+  color: #000000;        
+  text-decoration: none;        
+  padding: 10px 20px;
+  font-size: 17px;    
+}
+
+.sidebar a:hover {
+  background-color: #f0f0f0;
+}
+
+.sidebar hr {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 15px -5%;
+}
+
+.sidebar .close-sidebar {
+  margin-bottom: 20px;
+}
+
+.search-container {    
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  padding-bottom: 30px; /* Added padding to create space between search and links */
+  position: relative;
+}
+
+
+.search-container input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-container .search-button {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.search-container .search-button svg {
+  fill: #000;
+}
+
+.sidebar .search-container input[type="text"]::placeholder {
+  color: #999;
+}
+
+.sidebar .search-icon {
+  display: none;
+}
+.sidebar a[href="services.html"],
+.sidebar a[href="our_approach.html"],
+.sidebar a[href="stories.html"],
+.sidebar a[href="contact.html"] {
+  font-weight: bold;
+}    
+.navigation li {
+  list-style-type: none;
+  display: inline-block; /* Changed to inline-block to handle dropdown positioning */
+  position: relative; /* Added for dropdown positioning */
+}
+
+.navigation a {      
+  color: #000000;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+.navigation li:hover .dropdown {
+  display: block; /* Show dropdown on hover */
+  opacity: 1; /* Fully visible */
+  visibility: visible; /* Ensure dropdown is visible */
+  transition-delay: 0s; /* Immediate transition for showing */
+}
+
+.navigation li:hover .dropdownn {
+  display: block; /* Show dropdown on hover */
+  opacity: 1; /* Fully visible */
+  visibility: visible; /* Ensure dropdown is visible */
+  transition-delay: 0s; /* Immediate transition for showing */
+}
+
+.navigation a:hover {    
+  padding: 20px 15px;
+  background-color: #00773e;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 10px;    
+}
+
+.dropdown a:hover {    
+  padding: 15px 25px;
+  background-color: #00773e;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.dropdownn a:hover {    
+  padding: 15px 25px;
+  background-color: #00773e;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.search-nav {
+  margin: 10px;   
+  display: flex;
+  align-items: center;
+  width: 30%;
+  padding: 10px 0;
+  padding-bottom: 30px; /* Added padding to create space between search and links */
+  position: relative;
+}
+
+.search-nav input[type="text"] {
+  width: 85%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-nav .search-buttonn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}    
+
+.search-nav .search-buttonn svg {
+  fill: #000;
+}
+
+.menu-button {
+  display: none;
+}
+
+.dropdown {
+  display: block; /* Keep it block to use opacity and visibility */
+  position: absolute; /* Position relative to parent */
+  background-color: #f3f3f3;
+  padding: 0; /* Ensure no extra padding */      
+  top: 245.8%; /* Aligns dropdown directly below parent */
+  left: 0; /* Aligns dropdown to the left of parent */
+  width: 280px; /* Set a fixed width for the dropdown */ 
+  z-index: 9999; /* Ensure dropdown is on top */
+  opacity: 0; /* Initially invisible */
+  visibility: hidden; /* Hidden by default */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opacity and visibility */
+  text-align: center; /* Center-align text inside the dropdown */
+}
+
+.navigation li:hover .dropdown {
+  opacity: 10; /* Fully visible */
+  visibility: visible; /* Ensure dropdown is visible */
+  transition-delay: 0s; /* Immediate transition for showing */
+}
+
+.navigation li:not(:hover) .dropdown {
+  opacity: 0; /* Fade out */
+  visibility: hidden; /* Hide after fading out */
+  transition-delay: 0.1s; /* Delay before hiding */
+}
+
+.dropdown li {
+  display: block; /* Ensures dropdown items are stacked vertically */
+}
+
+.dropdown a {
+  display: block;
+  padding: 15px 25px;    
+  text-align: center; /* Center-align text inside each link */
+  text-align: left;
+  color: #000;
+  text-decoration: none;
+}
+
+.dropdown a:hover {
+  background-color: #00773e;
+  color: #ffffff;
+}
+
+/* Updated .dropdownn with right-side positioning */
+
+.dropdownn {
+  display: block; /* Keep it block to use opacity and visibility */
+  position: absolute; /* Position relative to parent */
+  background-color: #f3f3f3;
+  padding: 0; /* Ensure no extra padding */
+  top: 0; /* Align it at the top of the parent list */
+  left: 100%; /* Move it to the right of the parent dropdown */
+  width: 280px; /* Set a fixed width for the dropdown */ 
+  z-index: 9999; /* Ensure dropdown is on top */
+  opacity: 0; /* Initially invisible */
+  visibility: hidden; /* Hidden by default */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for opacity and visibility */
+  text-align: center; /* Center-align text inside the dropdown */
+}
+
+.navigation li:hover .dropdownn {
+  opacity: 10; /* Fully visible */
+  visibility: visible; /* Ensure dropdown is visible */
+  transition-delay: 0s; /* Immediate transition for showing */
+}
+
+.navigation li:not(:hover) .dropdownn {
+  opacity: 0; /* Fade out */
+  visibility: hidden; /* Hide after fading out */
+  transition-delay: 0.1s; /* Delay before hiding */
+}
+
+.dropdownn li {
+  display: block; /* Ensures dropdown items are stacked vertically */
+}
+
+.dropdownn a {
+  display: block;
+  padding: 15px 25px;    
+  text-align: center; /* Center-align text inside each link */
+  text-align: left;
+  color: #000;
+  text-decoration: none;
+}
+
+.dropdownn a:hover {
+  background-color: #00773e;
+  color: #ffffff;
+}
+.info-section {
+  background-image: url(./Images/Contact\ Us.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 260px 20px;
+  text-align: left; 
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center; 
+}
+
+.info-content {    
+  background-color: rgba(0, 97, 0, 0.836);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px; 
+  margin-left: 200px; 
+}
+
+.info-content h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 2em;
+}
+
+.info-content p {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+.container { 
+  max-width: 1500px;
+  margin:  auto;
+  padding: 60px;
+}
+.breadcrumb {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  font-size: 14px;
+}
+
+.breadcrumb li {
+  display: inline;
+  margin-right: 5px;
+}
+
+.breadcrumb li::after {
+  content: ">";
+  margin-left: 5px;
+}
+
+.breadcrumb li:last-child::after {
+  content: "";
+}
+
+.breadcrumb a {
+  color: #333;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  padding: 6px 5px;
+  background-color: #00773e;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 10px; 
+} 
+
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+.contact-form a{
+  color: #007500;
+}
+.contact-form, .contact-details {
+  flex: 1;
+}
+
+.contact-form h2, .contact-details h2 {
+  color: #007500;
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: 600;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 40%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact-form textarea {
+  height: 120px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.checkbox-group div {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background-color: #007500;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #005500;
+}
+
+.contact-details p {
+  margin-bottom: 20px;
+}
+
+.contact-details a {
+  color: #007500;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  /* Existing styling for 768px screens */
+  .top-bar {
+      display: flex;
+      justify-content: center;
+      font-size: 15px;
+      padding: 10px 5px;
+      background-color: #007500;
+  }
+
+  .top-links a {
+      color: #fff;
+      text-decoration: none;
+  }
+
+  .main-header {
+    display: flex;
+    color: #000;
+    justify-content: space-between;
+    align-items: center;
+    padding: 47.5px 20px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 125px;        
+}
+
+  .navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .navigation a {
+      color: #000000;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+  }
+
+  .menu-button a:hover {
+      background-color: #ffffff;
+  }
+
+  .navigation .hideOnMobile {
+      display: none;
+  }
+
+  .menu-button {
+      display: block; /* Make the menu button visible */
+  }
+
+  .top-links {
+      display: none;
+  }
+
+  .info-section {
+      background-image: url(./Images/Contact\ Us.jpg);
+      background-size: cover;
+      background-position: center;
+      padding: 120px 20px;
+      text-align: left;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+  }
+
+  .info-content {
+    display: none;
+      background-color: rgba(0, 153, 0, 0.8);
+      color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin-left: 0px;
+  }
+
+  .info-content h2 {
+      margin: 0;
+      color: #ffffff;
+      font-size: 1.5em;
+  }
+
+  .info-content p {
+      margin-top: 10px;
+      font-size: 1.1em;
+  }
+
+  .contact-section {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .contact-form,
+  .contact-details {
+      width: 100%;
+  }
+
+  .checkbox-group {
+      align-items: flex-start; /* Ensure checkboxes and labels are aligned next to each other */
+  }
+  .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+  .contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: 600;
+  }
+  .contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 90%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+}
