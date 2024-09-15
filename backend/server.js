@@ -55,10 +55,10 @@ app.post('/submit-feedback', async (req, res) => {
   try {
     const feedbackData = new Feedback(req.body);
     await feedbackData.save();
-    res.send('Feedback submitted successfully');
+    res.status(200).json({ message: 'Feedback submitted successfully' });
   } catch (err) {
-    console.error('Error saving feedback:', err);
-    res.status(500).send('Error submitting feedback');
+    console.error('Feedback submission error:', error);
+    res.status(500).json({ message: 'Failed to submit feedback' });
   }
 });
 
@@ -76,10 +76,10 @@ app.post('/submit-question', async (req, res) => {
     });
     
     await questionData.save();
-    res.send('Question submitted successfully');
+    res.status(200).json({ message: 'Question submitted successfully' });
   } catch (err) {
       console.error('Error saving form data:', err);
-      res.status(500).send('Error saving form data');
+      res.status(500).json({ message: 'Failed to submit question' });
     
   }
 });
