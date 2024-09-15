@@ -152,7 +152,7 @@
                    Send us an email to <a href="mailto:enquiry@interchangewa.org.au">enquiry@interchangewa.org.au</a> or fill out the contact form below.</p>
                 <h2>Let’s start a conversation</h2>
                 
-                <form id="contactForm" action="/submit-form" method="POST">
+                <form id="contactForm" method="POST">
                     <label for="name">Name *</label>
                     <input type="text" id="name" name="name" required />
                   
@@ -225,55 +225,50 @@
 
     <script>
 
-document.getElementById('sidebar-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
 
-  const formData = new FormData(this);
-
-  fetch('/submit-sidebar', {
-      method: 'POST',
-      body: new URLSearchParams(formData),
-      headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-      }
-  })
-  .then(response => {
-      // Check if the response is JSON
-      const contentType = response.headers.get('Content-Type');
-      if (contentType && contentType.includes('application/json')) {
-          return response.json();
-      } else {
-          throw new Error('Expected JSON response');
-      }
-  })
-  .then(data => {
-      console.log('Response Data:', data); // Log the response data
-
-      if (data.message === 'Sidebar form submitted successfully') {
-          Swal.fire({
-              icon: 'success',
-              title: 'Success',
-              text: data.message,
-          }).then(() => {
-              document.getElementById('sidebar-form').reset(); // Optionally reset the form
-          });
-      } else {
-          Swal.fire({
-              icon: 'error',
-              title: 'Submission Failed',
-              text: data.message || 'There was an issue submitting your form.',
-          });
-      }
-  })
-  .catch(error => {
-      console.error('Fetch Error:', error.message); // Log the error message
-      Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong! Please try again later.',
-      });
-  });
+    fetch('/submit-form', {
+        method: 'POST',
+        body: new URLSearchParams(formData),
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then(response => {
+        console.log('Response Status:', response.status); // Log the response status
+        return response.json();
+    })
+    .then(data => {
+        console.log('Server Response:', data); // Log the response data
+        if (data.message === 'Form submitted successfully') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: data.message,
+            }).then(() => {
+                document.getElementById('contactForm').reset();
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Submission Failed',
+                text: data.message || 'There was an issue submitting your form.',
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error); // Log the error
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong! Please try again later.',
+        });
+    });
 });
+
+
 
 
 

@@ -38,7 +38,7 @@ app.post('/submit-form', async (req, res) => {
     });
 
     await formData.save();
-    res.status(200).json({ success: true, message: 'Form data saved successfully' }); // Send JSON response
+    res.json({ message: 'Form submitted successfully' });
   } catch (err) {
     console.error('Error saving form data:', err);
     res.status(500).json({ success: false, message: 'Error saving form data' }); // Send JSON error response
