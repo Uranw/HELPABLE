@@ -38,10 +38,10 @@ app.post('/submit-form', async (req, res) => {
     });
 
     await formData.save();
-    res.json({ message: 'Form submitted successfully' });
+    res.status(200).json({ success: true, message: 'Form data saved successfully' }); // Send JSON response
   } catch (err) {
     console.error('Error saving form data:', err);
-    res.status(500).json({ success: false, message: 'Error saving form data' }); // Send JSON error response
+    res.status(500).json({ success: false, message: 'Error saving form data' });
   }
 });
 
@@ -58,21 +58,21 @@ app.post('/submit-feedback', async (req, res) => {
 });
 
 // Handle sidebar question form submission
-app.post('/submit-question', async (req, res) => {
+app.post('/submit-sidebar', async (req, res) => {
   try {
     const questionData = new Question({
       name: req.body['sidebar-name'],
       email: req.body['sidebar-email'],
       phone: req.body['sidebar-phone'],
       suburb: req.body['sidebar-suburb'],
-      message: req.body['sidebar-message']
+      message: req.body['sidebar-message'] || ''
     });
-    
+
     await questionData.save();
-    res.status(200).json({ message: 'Question submitted successfully' });
+    res.status(200).json({ message: 'Sidebar form submitted successfully' });
   } catch (err) {
-    console.error('Error saving form data:', err);
-    res.status(500).json({ message: 'Failed to submit question' });
+    console.error('Error saving Sidebar form data:', err.message); // Log the specific error message
+    res.status(500).json({ message: 'Failed to submit Sidebar form' });
   }
 });
 
@@ -85,18 +85,6 @@ app.post('/submit-our-approach', async (req, res) => {
   } catch (err) {
     console.error('Error saving Our Approach form data:', err);
     res.status(500).json({ message: 'Failed to submit Our Approach form' });
-  }
-});
-
-// Handle sidebar form submission
-app.post('/submit-sidebar', async (req, res) => {
-  try {
-    const sidebarData = new SidebarContact(req.body);
-    await sidebarData.save();
-    res.status(200).json({ message: 'Sidebar form submitted successfully' });
-  } catch (err) {
-    console.error('Error saving Sidebar form data:', err);
-    res.status(500).json({ message: 'Failed to submit Sidebar form' });
   }
 });
 

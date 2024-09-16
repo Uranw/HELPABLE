@@ -360,39 +360,39 @@ body {
 }
 
 .sidebar1 {
-    width: 300px;
+    width: 350px;
     padding: 20px;
     height: fit-content;
 }
 
+
 .assume {
-    padding: 20px;
+    padding: 60px;
     text-align: center;
 }
 
 .assume h1 {    
     color: #00572b;
-    padding: 10px 20px;
+    padding: 20px 0px;
     text-align: center;
     margin-bottom: 40px;
 }
 
-.assume-items-container { 
-    margin-left: -10%;   
+.assume-items-container {       
     display: flex;
     justify-content: space-around;
 }
 
 .assume-item {    
-    width: 500px;    
-    margin: 20px;
-    padding: 60px;
+    width: 450px;    
+    margin: 0px;
+    padding: 0px;
     border-radius: 5px;
     text-align: left; /* Ensure text within items is aligned left */
 }
 
 .assume-item img {
-    width: 140%;
+    width: 100%;
     height: auto;
     justify-content: space-between;
     border-radius: 10px;
@@ -683,6 +683,7 @@ footer .footer-bottom a {
 .menu-button a:hover{
     background-color: #ffffff;
 }
+}
 /* Hide only the navigation links on screens 768px and smaller */
 @media screen and (max-width: 768px) {
     .navigation .hideOnMobile {
@@ -873,63 +874,42 @@ footer .footer-bottom a {
             display: none; /* Hide the footer-middle section on small screens */
         }
       }
-    }
 
-    .container { 
-        width: 90%; /* Ensure full width */                    
-        display: flex;
-        flex-direction: column;        
-    }
-
-    .content-sidebar-wrapper {        
-        display: flex;
-        flex-direction: column;
-    }
-
-    .content {        
-        width: 90%; /* Ensure full width */
-        
-    }
-
-    .sidebar1 {
-        width: 100%;
-        margin-left: -5%;
-        margin-top: 20px;
-        order: 2; /* Ensures the sidebar comes after the content */
-    }
-    
-    .assume-items-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Center the items horizontally */
-    }
-    
-    .assume-item p{
-        text-align: center;
-        
-    }
-
-    .assume-item {
-        margin-right: -5%;        
-        max-width: 350px; /* Optional: Set a max-width for larger screens */
-        margin-bottom: 20px;
-        padding: 20px;
-        text-align: center;
-    }
-    
-    .assume-item img {
-        margin-left: -5%;               
-        width: 110%; /* Adjust to ensure the image scales properly */
-        height: auto;
-    }
-    
     
 
 @media (max-width: 800px){
     .top-links{
         display: none;
     }    
-} 
+}
+@media (max-width: 768px) {
+    .content-sidebar-wrapper {
+        flex-direction: column; /* Stack content and sidebar vertically */
+        margin-bottom: 30px; /* Adjust margin for spacing */
+    }
 
+    .content {
+        margin-right: 0; /* Remove margin when stacked */
+    }
 
+    .sidebar1 {
+        width: 90%; /* Make sidebar full width on smaller screens */
+        margin-top: 20px; /* Add some space above the sidebar */
+    }
+
+    .assume {
+        padding: 30px; /* Adjust padding for smaller screens */
+    }
+
+    .assume-items-container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .assume-item {
+        width: 100%; /* Make items full width */
+        max-width: 600px; /* Limit maximum width */
+        margin-bottom: 20px; /* Add space between items */
+    }
+}
 
