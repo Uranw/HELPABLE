@@ -1,17 +1,33 @@
-// Helper function to create and append card
+// Helper function to create and append a card for feedback data
 function createCard(container, data) {
   const card = document.createElement('div');
   card.classList.add('data-card');
 
   card.innerHTML = `
-    <h3>${data.name}</h3>
-    <p><strong>Email:</strong> ${data.email}</p>
-    <p><strong>Phone:</strong> ${data.phone}</p>
-    <p><strong>Suburb:</strong> ${data.suburb}</p>
-    <p><strong>Postcode:</strong> ${data.postcode}</p>
-    <p><strong>Feedback:</strong> ${data.feedback}</p>
-    <p><strong>Story:</strong> ${data.story}</p>
-    <p><strong>Confidential:</strong> ${data.confidential}</p>
+    <h3>${data.name || 'No Name'}</h3>
+    <p><strong>Email:</strong> ${data.email || 'No Email'}</p>
+    <p><strong>Phone:</strong> ${data.phone || 'No Phone'}</p>
+    <p><strong>Suburb:</strong> ${data.suburb || 'No Suburb'}</p>
+    <p><strong>Postcode:</strong> ${data.postcode || 'No Postcode'}</p>
+    <p><strong>Feedback:</strong> ${data.feedback || 'No Feedback'}</p>
+    <p><strong>Story:</strong> ${data.story || 'No Story'}</p>
+    <p><strong>Confidential:</strong> ${data.confidential || 'No Confidentiality Info'}</p>
+  `;
+
+  container.appendChild(card);
+}
+
+// Helper function to create and append a card for questions data
+function createQuestionCard(container, data) {
+  const card = document.createElement('div');
+  card.classList.add('data-card');
+
+  card.innerHTML = `
+    <h3>${data.name || 'No Name'}</h3>
+    <p><strong>Email:</strong> ${data.email || 'No Email'}</p>
+    <p><strong>Phone:</strong> ${data.phone || 'No Phone'}</p>
+    <p><strong>Suburb:</strong> ${data.suburb || 'No Suburb'}</p>
+    <p><strong>Message:</strong> ${data.message || 'No Message'}</p>
   `;
 
   container.appendChild(card);
@@ -19,25 +35,80 @@ function createCard(container, data) {
 
 // Fetch and display feedback data
 fetch('/api/feedback')
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to fetch feedback data');
+    }
+    return response.json();
+  })
   .then(data => {
     const feedbackContainer = document.getElementById('feedbackContainer');
-    data.forEach(feedback => {
-      createCard(feedbackContainer, feedback);
-    });
+    if (data.length === 0) {
+      feedbackContainer.innerHTML = '<p>No feedback data available.</p>';
+    } else {
+      data.forEach(feedback => {
+        createCard(feedbackContainer, feedback);
+      });
+    }
   })
   .catch(error => console.error('Error fetching feedback data:', error));
 
-// Fetch and display sidebar question data
-fetch('/api/sidebar')
-  .then(response => response.json())
-  .then(data => {
-    console.log('Sidebar Data:', data); // Add this line to check
-    const sidebarContainer = document.getElementById('sidebarContainer');
-    data.forEach(question => {
-      createCard(sidebarContainer, question);
-    });
-  })
-  .catch(error => console.error('Error fetching sidebar questions:', error));
+// Fetch Sidebar Contacts
+async function fetchSidebarContacts() {
+  try {
+    const response = await fetch('/api/sidebar');
+    if (!response.ok) {
+      throw new Error('Failed to fetch sidebar contacts');
+    }
+    const sidebarData = await response.json();
 
-// You can replicate this pattern to fetch other collections (forms, ourapproachs, questions)
+    // Populate the sidebar data in the DOM
+    const sidebarContainer = document.getElementById('sidebarContainer');
+    if (sidebarData.length === 0) {
+      sidebarContainer.innerHTML = '<p>No sidebar contact data available.</p>';
+    } else {
+      sidebarData.forEach(contact => {
+        const contactElement = document.createElement('div');
+        contactElement.classList.add('sidebar-contact');
+        contactElement.innerHTML = `
+          <strong>Name:</strong> ${contact.name || 'No Name'} <br>
+          <strong>Email:</strong> ${contact.email || 'No Email'} <br>
+          <strong>Phone:</strong> ${contact.phone || 'No Phone'} <br>
+          <strong>Suburb:</strong> ${contact.suburb || 'No Suburb'} <br>
+          <strong>Message:</strong> ${contact.message || 'No Message'} <br>
+          <hr>
+        `;
+        sidebarContainer.appendChild(contactElement);
+      });
+    }
+  } catch (error) {
+    console.error('Error fetching sidebar contacts:', error);
+  }
+}
+
+// Fetch and display questions data
+async function fetchQuestions() {
+  try {
+    const response = await fetch('/api/questions');
+    if (!response.ok) {
+      throw new Error('Failed to fetch questions data');
+    }
+    const questionsData = await response.json();
+
+    // Populate the questions data in the DOM
+    const questionsContainer = document.getElementById('questionsContainer');
+    if (questionsData.length === 0) {
+      questionsContainer.innerHTML = '<p>No questions data available.</p>';
+    } else {
+      questionsData.forEach(question => {
+        createQuestionCard(questionsContainer, question);
+      });
+    }
+  } catch (error) {
+    console.error('Error fetching questions data:', error);
+  }
+}
+
+// Call the functions when the page loads
+fetchSidebarContacts();
+fetchQuestions();

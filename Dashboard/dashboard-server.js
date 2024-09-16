@@ -1,4 +1,3 @@
-
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -22,7 +21,7 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
 // Load models
 const Feedback = require('./models/Feedback');
 const SidebarContact = require('./models/SidebarContact');
-// Add models for other collections as needed (forms, ourapproachs, questions)
+const Question = require('./models/Question');
 
 // Routes to fetch feedback data
 app.get('/api/feedback', async (req, res) => {
@@ -36,28 +35,24 @@ app.get('/api/feedback', async (req, res) => {
 });
 
 // Routes to fetch sidebar contact data
-// Fetch sidebar questions data
 app.get('/api/sidebar', async (req, res) => {
   try {
     const sidebarContacts = await SidebarContact.find({});
     res.status(200).json(sidebarContacts);
   } catch (err) {
-    console.error('Error fetching sidebar questions:', err);
-    res.status(500).json({ message: 'Error fetching sidebar questions' });
+    console.error('Error fetching sidebar contacts:', err);
+    res.status(500).json({ message: 'Error fetching sidebar contacts' });
   }
 });
 
-
-
-// Add routes for other collections (forms, ourapproachs, questions)
-// Example for 'ourapproachs':
-app.get('/api/ourapproachs', async (req, res) => {
+// Routes to fetch questions data
+app.get('/api/questions', async (req, res) => {
   try {
-    const ourApproachData = await OurApproach.find();
-    res.status(200).json(ourApproachData);
+    const questionsData = await Question.find();
+    res.status(200).json(questionsData);
   } catch (err) {
-    console.error('Error fetching Our Approach data:', err);
-    res.status(500).json({ message: 'Failed to fetch Our Approach data' });
+    console.error('Error fetching questions data:', err);
+    res.status(500).json({ message: 'Failed to fetch questions data' });
   }
 });
 
