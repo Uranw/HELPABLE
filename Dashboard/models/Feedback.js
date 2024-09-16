@@ -7,9 +7,8 @@ const feedbackSchema = new mongoose.Schema({
   suburb: String,
   postcode: String,
   feedback: String,
-  response: String,
   story: String,
-  confidential: String
+  confidential: String,
 });
 
 module.exports = mongoose.model('Feedback', feedbackSchema);
