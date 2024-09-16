@@ -38,7 +38,7 @@ app.post('/submit-form', async (req, res) => {
     });
 
     await formData.save();
-    res.status(200).json({ success: true, message: 'Form data saved successfully' }); // Send JSON response
+    res.json({ message: 'Form submitted successfully' });
   } catch (err) {
     console.error('Error saving form data:', err);
     res.status(500).json({ success: false, message: 'Error saving form data' });
@@ -69,12 +69,14 @@ app.post('/submit-sidebar', async (req, res) => {
     });
 
     await questionData.save();
-    res.status(200).json({ message: 'Sidebar form submitted successfully' });
+    res.json({ message: 'Sidebar form submitted successfully' });
   } catch (err) {
     console.error('Error saving Sidebar form data:', err.message); // Log the specific error message
     res.status(500).json({ message: 'Failed to submit Sidebar form' });
   }
 });
+
+
 
 // Handle our approach form submission
 app.post('/submit-our-approach', async (req, res) => {
