@@ -22,6 +22,7 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
 const Feedback = require('./models/Feedback');
 const SidebarContact = require('./models/SidebarContact');
 const Question = require('./models/Question');
+const OurApproachContact = require('./models/OurApproachContact');
 
 // Routes to fetch feedback data
 app.get('/api/feedback', async (req, res) => {
@@ -37,11 +38,11 @@ app.get('/api/feedback', async (req, res) => {
 // Routes to fetch sidebar contact data
 app.get('/api/sidebar', async (req, res) => {
   try {
-    const sidebarContacts = await SidebarContact.find({});
+    const sidebarContacts = await SidebarContact.find();
     res.status(200).json(sidebarContacts);
   } catch (err) {
     console.error('Error fetching sidebar contacts:', err);
-    res.status(500).json({ message: 'Error fetching sidebar contacts' });
+    res.status(500).json({ message: 'Failed to fetch sidebar contacts' });
   }
 });
 
@@ -53,6 +54,17 @@ app.get('/api/questions', async (req, res) => {
   } catch (err) {
     console.error('Error fetching questions data:', err);
     res.status(500).json({ message: 'Failed to fetch questions data' });
+  }
+});
+
+// Routes to fetch OurApproachContact data
+app.get('/api/ourapproachcontacts', async (req, res) => {
+  try {
+    const ourApproachContacts = await OurApproachContact.find();
+    res.status(200).json(ourApproachContacts);
+  } catch (err) {
+    console.error('Error fetching Our Approach Contacts data:', err);
+    res.status(500).json({ message: 'Failed to fetch Our Approach Contacts data' });
   }
 });
 
