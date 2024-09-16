@@ -23,8 +23,20 @@ const Feedback = require('./models/Feedback');
 const SidebarContact = require('./models/SidebarContact');
 const Question = require('./models/Question');
 const OurApproachContact = require('./models/OurApproachContact');
+const Form = require('./models/Form'); // Added Form model
 
-// Routes to fetch feedback data
+// Routes to fetch form data
+app.get('/api/forms', async (req, res) => {
+  try {
+    const formData = await Form.find();
+    res.status(200).json(formData);
+  } catch (err) {
+    console.error('Error fetching form data:', err);
+    res.status(500).json({ message: 'Failed to fetch form data' });
+  }
+});
+
+// Other routes...
 app.get('/api/feedback', async (req, res) => {
   try {
     const feedbackData = await Feedback.find();
@@ -35,40 +47,36 @@ app.get('/api/feedback', async (req, res) => {
   }
 });
 
-/*
-// Routes to fetch sidebar contact data
 app.get('/api/sidebar', async (req, res) => {
   try {
-    const sidebarContacts = await SidebarContact.find();
+    const sidebarContacts = await SidebarContact.find({});
     res.status(200).json(sidebarContacts);
   } catch (err) {
     console.error('Error fetching sidebar contacts:', err);
-    res.status(500).json({ message: 'Failed to fetch sidebar contacts' });
+    res.status(500).json({ message: 'Error fetching sidebar contacts' });
   }
 });
-*/
 
-// Routes to fetch questions data
 app.get('/api/questions', async (req, res) => {
   try {
-    const questionsData = await Question.find();
+    const questionsData = await Question.find({});
     res.status(200).json(questionsData);
   } catch (err) {
-    console.error('Error fetching questions data:', err);
-    res.status(500).json({ message: 'Failed to fetch questions data' });
+    console.error('Error fetching questions:', err);
+    res.status(500).json({ message: 'Error fetching questions' });
   }
 });
 
-// Routes to fetch OurApproachContact data
-app.get('/api/ourapproachcontacts', async (req, res) => {
+app.get('/api/ourapproachcontact', async (req, res) => {
   try {
-    const ourApproachContacts = await OurApproachContact.find();
-    res.status(200).json(ourApproachContacts);
+    const ourApproachData = await OurApproachContact.find();
+    res.status(200).json(ourApproachData);
   } catch (err) {
-    console.error('Error fetching Our Approach Contacts data:', err);
-    res.status(500).json({ message: 'Failed to fetch Our Approach Contacts data' });
+    console.error('Error fetching Our Approach data:', err);
+    res.status(500).json({ message: 'Failed to fetch Our Approach data' });
   }
 });
+
 
 // Serve Dashboard.html as the default page
 app.get('*', (req, res) => {
