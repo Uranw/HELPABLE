@@ -152,7 +152,7 @@
                    Send us an email to <a href="mailto:enquiry@interchangewa.org.au">enquiry@interchangewa.org.au</a> or fill out the contact form below.</p>
                 <h2>Let’s start a conversation</h2>
                 
-                <form id="contactForm" method="POST">
+                <form id="submit-form" method="POST">
                     <label for="name">Name *</label>
                     <input type="text" id="name" name="name" required />
                   
@@ -225,7 +225,7 @@
 
     <script>
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+document.getElementById('submit-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(this);
 
@@ -248,7 +248,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
                 title: 'Success',
                 text: data.message,
             }).then(() => {
-                document.getElementById('contactForm').reset();
+                document.getElementById('submit-form').reset();
             });
         } else {
             Swal.fire({
