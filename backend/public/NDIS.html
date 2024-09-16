@@ -287,7 +287,39 @@
             
         </div>
       </footer>
-      <script>
+
+      <!--Include SweetAlert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+
+const questionForm = document.querySelector('form[action="/submit-sidebar"]');
+  questionForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(questionForm);
+
+    fetch('/submit-sidebar', {
+      method: 'POST',
+      body: new URLSearchParams(formData),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message) {
+        Swal.fire({ icon: 'success', title: 'Question Submitted!', text: data.message });
+        questionForm.reset();
+      } else {
+        Swal.fire({ icon: 'error', title: 'Submission Failed', text: data.message || 'There was an issue submitting your question.' });
+      }
+    })
+    .catch(error => {
+      console.error('Fetch Error:', error.message);
+      Swal.fire({ icon: 'error', title: 'Oops...', text: 'Something went wrong! Please try again later.'
+
+       });
+    });
+  });
+
         function showSidebar(){
             const sidebarr = document.querySelector('.sidebarr') 
             sidebarr.style.display = 'flex'
