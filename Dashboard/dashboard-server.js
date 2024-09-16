@@ -35,6 +35,7 @@ app.get('/api/feedback', async (req, res) => {
   }
 });
 
+/*
 // Routes to fetch sidebar contact data
 app.get('/api/sidebar', async (req, res) => {
   try {
@@ -45,6 +46,7 @@ app.get('/api/sidebar', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch sidebar contacts' });
   }
 });
+*/
 
 // Routes to fetch questions data
 app.get('/api/questions', async (req, res) => {

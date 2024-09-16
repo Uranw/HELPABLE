@@ -70,6 +70,8 @@ fetch('/api/feedback')
   })
   .catch(error => console.error('Error fetching feedback data:', error));
 
+
+  /*
 // Fetch Sidebar Contacts
 async function fetchSidebarContacts() {
   try {
@@ -102,6 +104,8 @@ async function fetchSidebarContacts() {
     console.error('Error fetching sidebar contacts:', error);
   }
 }
+*/
+
 
 // Fetch and display questions data
 async function fetchQuestions() {
@@ -150,6 +154,6 @@ async function fetchOurApproachContacts() {
 }
 
 // Call the functions when the page loads
-fetchSidebarContacts();
+//fetchSidebarContacts();
 fetchQuestions();
 fetchOurApproachContacts();
