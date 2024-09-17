@@ -1,7 +1,43 @@
+// Helper function to create a delete button and attach event listener
+function createDeleteButton(collection, id) {
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.classList.add('delete-btn');
+
+  // Attach event listener for delete
+  deleteBtn.addEventListener('click', () => {
+    if (confirm('Are you sure you want to delete this item?')) {
+      deleteData(collection, id);
+    }
+  });
+
+  return deleteBtn;
+}
+
+// Function to send a DELETE request to the server
+async function deleteData(collection, id) {
+  try {
+    const response = await fetch(`/api/${collection}/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      alert('Data deleted successfully');
+      // Optionally, remove the card from the UI
+      document.getElementById(id).remove();
+    } else {
+      alert('Failed to delete data');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
 // Helper function to create and append a card for feedback data
 function createCard(container, data) {
   const card = document.createElement('div');
   card.classList.add('data-card');
+  card.id = data._id;  // Set the ID for the card
 
   card.innerHTML = `
     <h3>${data.name || 'No Name'}</h3>
@@ -14,6 +50,10 @@ function createCard(container, data) {
     <p><strong>Confidential:</strong> ${data.confidential || 'No Confidentiality Info'}</p>
   `;
 
+  // Append the delete button
+  const deleteBtn = createDeleteButton('feedback', data._id);
+  card.appendChild(deleteBtn);
+
   container.appendChild(card);
 }
 
@@ -21,6 +61,7 @@ function createCard(container, data) {
 function createQuestionCard(container, data) {
   const card = document.createElement('div');
   card.classList.add('data-card');
+  card.id = data._id;  // Set the ID for the card
 
   card.innerHTML = `
     <h3>${data.name || 'No Name'}</h3>
@@ -30,6 +71,10 @@ function createQuestionCard(container, data) {
     <p><strong>Message:</strong> ${data.message || 'No Message'}</p>
   `;
 
+  // Append the delete button
+  const deleteBtn = createDeleteButton('questions', data._id);
+  card.appendChild(deleteBtn);
+
   container.appendChild(card);
 }
 
@@ -37,6 +82,7 @@ function createQuestionCard(container, data) {
 function createOurApproachContactCard(container, data) {
   const card = document.createElement('div');
   card.classList.add('data-card');
+  card.id = data._id;  // Set the ID for the card
 
   card.innerHTML = `
     <h3>${data.name || 'No Name'}</h3>
@@ -47,6 +93,10 @@ function createOurApproachContactCard(container, data) {
     <p><strong>Concern:</strong> ${data.concern || 'No Concern'}</p>
   `;
 
+  // Append the delete button
+  const deleteBtn = createDeleteButton('ourapproachcontact', data._id);
+  card.appendChild(deleteBtn);
+
   container.appendChild(card);
 }
 
@@ -54,6 +104,7 @@ function createOurApproachContactCard(container, data) {
 function createFormCard(container, data) {
   const card = document.createElement('div');
   card.classList.add('data-card');
+  card.id = data._id;  // Set the ID for the card
 
   card.innerHTML = `
     <h3>${data.name || 'No Name'}</h3>
@@ -63,6 +114,10 @@ function createFormCard(container, data) {
     <p><strong>Services:</strong> ${data.services.length > 0 ? data.services.join(', ') : 'No Services'}</p>
     <p><strong>Message:</strong> ${data.message || 'No Message'}</p>
   `;
+
+  // Append the delete button
+  const deleteBtn = createDeleteButton('forms', data._id);
+  card.appendChild(deleteBtn);
 
   container.appendChild(card);
 }
@@ -113,7 +168,7 @@ async function fetchQuestions() {
 // Fetch and display OurApproachContact data
 async function fetchOurApproachContacts() {
   try {
-    const response = await fetch('/api/ourapproachcontact'); // Correct endpoint
+    const response = await fetch('/api/ourapproachcontact');
     if (!response.ok) {
       throw new Error('Failed to fetch Our Approach Contacts data');
     }
@@ -132,7 +187,6 @@ async function fetchOurApproachContacts() {
     console.error('Error fetching Our Approach Contacts data:', error);
   }
 }
-
 
 // Fetch and display form data
 async function fetchForms() {
@@ -157,7 +211,9 @@ async function fetchForms() {
   }
 }
 
-// Call the functions when the page loads
+
+
+// Call the fetch functions when the page loads
 fetchQuestions();
 fetchOurApproachContacts();
-fetchForms();  // Fetch form data
+fetchForms();

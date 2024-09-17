@@ -86,3 +86,42 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
   console.log(`Dashboard server running on port ${port}`);
 });
+
+// DELETE route for deleting data by ID from a specific collection
+app.delete('/api/:collection/:id', async (req, res) => {
+  const { collection, id } = req.params;
+
+  try {
+    let model;
+    switch (collection) {
+      case 'feedback':
+        model = Feedback;
+        break;
+      case 'sidebar':
+        model = SidebarContact;
+        break;
+      case 'questions':
+        model = Question;
+        break;
+      case 'ourapproachcontact':
+        model = OurApproachContact;
+        break;
+      case 'forms':
+        model = Form;
+        break;
+      default:
+        return res.status(400).json({ error: 'Invalid collection' });
+    }
+
+    const result = await model.findByIdAndDelete(id);
+
+    if (result) {
+      return res.status(200).json({ message: 'Document deleted successfully' });
+    } else {
+      return res.status(404).json({ error: 'Document not found' });
+    }
+  } catch (error) {
+    console.error('Error deleting document:', error);
+    return res.status(500).json({ error: 'Server error' });
+  }
+});

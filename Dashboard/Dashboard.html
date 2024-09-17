@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HELPABLE | Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Dashboard.css">
 </head>
 <body>
@@ -12,69 +12,178 @@
         <div class="top-bar">
             <div class="contact-info">
                 <span>📞 (08) 9329 9399</span>
-            </div>            
+            </div>
         </div>
         <div class="main-header">
             <div class="logo">
                 <a href="index.html">
                     <img src="./image/Interchange1.png" alt="Interchange Logo">
-                </a>                
+                </a>
             </div>
             <div class="admin-title">
                 <h1>Admin Dashboard</h1>
-            </div>                     
+            </div>
         </div>
     </header>
     
-    <!-- Sidebar navigation -->
     <aside class="sidebar">
         <ul>
-            <li><a href="#" onclick="showSection('feedbackSection')">Feedback Data</a></li>
-            <li><a href="#" onclick="showSection('questionsSection')">Questions</a></li>
-            <li><a href="#" onclick="showSection('ourApproachContactsSection')">Our Approach Contacts</a></li>
-            <li><a href="#" onclick="showSection('formsSection')">Forms</a></li>
+            <li><a href="#" id="feedbackSectionLink" onclick="showSection('feedbackSection')">Feedback Data</a></li>
+            <li><a href="#" id="questionsSectionLink" onclick="showSection('questionsSection')">Questions</a></li>
+            <li><a href="#" id="ourApproachContactsSectionLink" onclick="showSection('ourApproachContactsSection')">Our Approach Contacts</a></li>
+            <li><a href="#" id="formsSectionLink" onclick="showSection('formsSection')">Forms</a></li>
         </ul>
     </aside>
 
-    <div class="main-content">
+    <main class="main-content">
         <!-- Section for feedback data -->
-        <div id="feedbackSection" class="data-section">
+        <section id="feedbackSection" class="data-section">
             <h2>Feedback Data</h2>
             <div id="feedbackContainer" class="data-container"></div>
-        </div>
+        </section>
 
         <!-- Section for questions data -->
-        <div id="questionsSection" class="data-section" style="display:none;">
+        <section id="questionsSection" class="data-section" style="display:none;">
             <h2>Questions</h2>
             <div id="questionsContainer" class="data-container"></div>
-        </div>
+        </section>
 
         <!-- Section for OurApproachContact data -->
-        <div id="ourApproachContactsSection" class="data-section" style="display:none;">
+        <section id="ourApproachContactsSection" class="data-section" style="display:none;">
             <h2>Our Approach Contacts</h2>
             <div id="ourApproachContactsContainer" class="data-container"></div>
-        </div>
+        </section>
 
         <!-- Section for form data -->
-        <div id="formsSection" class="data-section" style="display:none;">
+        <section id="formsSection" class="data-section" style="display:none;">
             <h2>Forms</h2>
             <div id="formsContainer" class="data-container"></div>
+        </section>
+    </main>
+
+    <!-- Confirmation Dialog -->
+    <div id="confirmDialog" class="confirm-dialog">
+        <div class="confirm-dialog-content">
+            <h2>Confirm Delete</h2>
+            <p>Are you sure you want to delete this item?</p>
+            <button id="confirmDeleteBtn" class="confirm-btn">Yes, Delete</button>
+            <button id="cancelDeleteBtn" class="cancel-btn">Cancel</button>
         </div>
+    </div>
+
+    <!-- Success Alert -->
+    <div id="successAlert" class="alert alert-success">
+        <p>Data deleted successfully!</p>
+        <button id="closeAlertBtn" class="close-btn">Close</button>
     </div>
 
     <script src="Dashboard.js"></script>
     <script>
+        // Function to show the confirmation dialog
+        function showConfirmDialog(id, callback) {
+            const dialog = document.getElementById('confirmDialog');
+            const confirmBtn = document.getElementById('confirmDeleteBtn');
+            const cancelBtn = document.getElementById('cancelDeleteBtn');
+
+            dialog.style.display = 'flex'; // Show the dialog
+
+            // Confirm delete button click handler
+            confirmBtn.onclick = () => {
+                dialog.style.display = 'none'; // Hide the dialog
+                callback(); // Call the callback function (e.g., delete the item)
+            };
+
+            // Cancel button click handler
+            cancelBtn.onclick = () => {
+                dialog.style.display = 'none'; // Hide the dialog
+            };
+        }
+
+        // Update createDeleteButton to use showConfirmDialog
+        function createDeleteButton(collection, id) {
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.classList.add('delete-btn');
+
+            // Attach event listener for delete
+            deleteBtn.addEventListener('click', () => {
+                showConfirmDialog(id, () => {
+                    deleteData(collection, id); // Call deleteData with the collection and id
+                });
+            });
+
+            return deleteBtn;
+        }
+
+        // Function to show the success alert
+        function showSuccessAlert(message) {
+            const alertBox = document.getElementById('successAlert');
+            const closeBtn = document.getElementById('closeAlertBtn');
+
+            alertBox.querySelector('p').textContent = message;
+            alertBox.style.display = 'block'; // Show the alert
+
+            // Close button click handler
+            closeBtn.onclick = () => {
+                alertBox.style.display = 'none'; // Hide the alert
+            };
+
+            // Automatically hide the alert after 3 seconds
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 3000);
+        }
+
+        // Update deleteData to use showSuccessAlert
+        async function deleteData(collection, id) {
+            try {
+                const response = await fetch(`/api/${collection}/${id}`, {
+                    method: 'DELETE',
+                });
+
+                if (response.ok) {
+                    showSuccessAlert('Data deleted successfully'); // Show success alert
+                    // Optionally, remove the card from the UI
+                    document.getElementById(id).remove();
+                } else {
+                    showErrorAlert('Failed to delete data'); // Optional: create an error alert
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Function to handle active link state
+        function setActiveLink(linkId) {
+            // Remove the 'active' class from all links
+            const links = document.querySelectorAll('.sidebar ul li a');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Add the 'active' class to the clicked link
+            const activeLink = document.getElementById(linkId);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
         // Function to show the selected section and hide others
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.data-section');
             sections.forEach(section => {
-                if (section.id === sectionId) {
-                    section.style.display = 'block';
-                } else {
-                    section.style.display = 'none';
-                }
+                section.style.display = section.id === sectionId ? 'block' : 'none';
             });
+
+            // Set the active link
+            setActiveLink(sectionId + 'Link');
         }
+
+        // Initial section to show (optional)
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('feedbackSection'); // Set the default section
+            setActiveLink('feedbackSectionLink'); // Set the default active link
+        });
     </script>
 </body>
 </html>
