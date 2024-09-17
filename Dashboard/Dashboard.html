@@ -3,44 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>HELPABLE | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Dashboard.css">
 </head>
 <body>
-    <h1>Dashboard</h1>
+    <header class="header">
+        <div class="top-bar">
+            <div class="contact-info">
+                <span>📞 (08) 9329 9399</span>
+            </div>            
+        </div>
+        <div class="main-header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./image/Interchange1.png" alt="Interchange Logo">
+                </a>                
+            </div>
+            <div class="admin-title">
+                <h1>Admin Dashboard</h1>
+            </div>                     
+        </div>
+    </header>
+    
+    <!-- Sidebar navigation -->
+    <aside class="sidebar">
+        <ul>
+            <li><a href="#" onclick="showSection('feedbackSection')">Feedback Data</a></li>
+            <li><a href="#" onclick="showSection('questionsSection')">Questions</a></li>
+            <li><a href="#" onclick="showSection('ourApproachContactsSection')">Our Approach Contacts</a></li>
+            <li><a href="#" onclick="showSection('formsSection')">Forms</a></li>
+        </ul>
+    </aside>
 
-    <!-- Section for feedback data -->
-    <div id="feedbackSection">
-        <h2>Feedback Data</h2>
-        <div id="feedbackContainer" class="data-container"></div>
+    <div class="main-content">
+        <!-- Section for feedback data -->
+        <div id="feedbackSection" class="data-section">
+            <h2>Feedback Data</h2>
+            <div id="feedbackContainer" class="data-container"></div>
+        </div>
+
+        <!-- Section for questions data -->
+        <div id="questionsSection" class="data-section" style="display:none;">
+            <h2>Questions</h2>
+            <div id="questionsContainer" class="data-container"></div>
+        </div>
+
+        <!-- Section for OurApproachContact data -->
+        <div id="ourApproachContactsSection" class="data-section" style="display:none;">
+            <h2>Our Approach Contacts</h2>
+            <div id="ourApproachContactsContainer" class="data-container"></div>
+        </div>
+
+        <!-- Section for form data -->
+        <div id="formsSection" class="data-section" style="display:none;">
+            <h2>Forms</h2>
+            <div id="formsContainer" class="data-container"></div>
+        </div>
     </div>
-
-    <!-- Section for sidebar question data 
-    <div id="sidebarSection">
-        <h2>Sidebar Questions</h2>
-        <div id="sidebarContainer" class="data-container"></div>
-    </div>
-    -->
-
-    <!-- Section for questions data -->
-    <div id="questionsSection">
-        <h2>Questions</h2>
-        <div id="questionsContainer" class="data-container"></div>
-    </div>
-
-    <!-- Section for OurApproachContact data -->
-    <div id="ourApproachContactsSection">
-        <h2>Our Approach Contacts</h2>
-        <div id="ourApproachContactsContainer" class="data-container"></div>
-    </div>
-
-    <!-- Section for form data -->
-<div id="formsSection">
-    <h2>Forms</h2>
-    <div id="formsContainer" class="data-container"></div>
-</div>
-
 
     <script src="Dashboard.js"></script>
+    <script>
+        // Function to show the selected section and hide others
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.data-section');
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

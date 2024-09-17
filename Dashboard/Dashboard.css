@@ -1,28 +1,112 @@
 /* General body styling */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
   margin: 0;
-  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f4f4;
+  padding-top: 140px;
 }
 
-h1 {
+/* Header styling */
+.header {
+  background-color: #ffffff;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  color: #ffffff;
+}
+
+/* Top bar styling */
+.top-bar {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  padding: 14px 0;
+  background-color: #007500;
+}
+
+/* Contact info inside top bar */
+.contact-info {
   text-align: center;
-  color: #333;
-  margin-bottom: 30px;
 }
 
-h2 {
-  color: #444;
+/* Main header styling */
+.main-header {
+  display: flex;
+  justify-content: start; /* Start the logo */
+  align-items: center;
+  padding: 20px 0;
+}
+
+/* Logo styling */
+.logo img {
+  margin-left: 40px;
+  width: 130px;
+  height: auto;
+}
+/* Admin Dashboard title styling */
+.admin-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.admin-title h1 {
+  font-size: 24px;
+  color: #005e00;
+  z-index: 99999999;
+}
+/* New content wrapper to separate sidebar and main content */
+.content-wrapper {
+  display: flex;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 250px;
+  background-color: #007500;
+  position: fixed;
+  top: 130px;
+  bottom: 0;
+  padding: 20px;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
   margin-bottom: 20px;
-  font-size: 1.8em;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 10px;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+  display: block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background-color: #ffffff;
+  color: #000;
+  text-decoration: none;  
+}
+
+/* Main content area */
+.main-content {
+  margin-left: 270px; /* Adjust based on sidebar width */
+  padding: 20px;
+  flex-grow: 1;
 }
 
 /* Section styling */
-#feedbackSection, #sidebarSection, #questionsSection, #ourApproachContactsSection {
-  margin-bottom: 40px;
+.doms {
+  padding: 20px;
+  padding-top: 100px;
 }
 
 /* Container styling for data display */
